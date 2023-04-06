@@ -1,1 +1,1 @@
-Invoke-WebRequest -Uri https://github.com/Dylan-Tyler/TS-POSH/blob/main/WindowsUpdatesv3-IMPORT.ps1 -OutFile "C:\TS\WindowsUpdates\settings.xml"
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/dylan-tyler/ts-posh/master/WindowsUpdatesv3-IMPORT.ps1 -OutFile "C:\TS\WindowsUpdates\settings.xml"
