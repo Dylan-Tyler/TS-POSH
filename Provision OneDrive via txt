@@ -1,0 +1,15 @@
+Set-ExecutionPolicy Unrestricted -Force
+
+#Install modules and update
+Install-Module AzureAD -force
+Get-Module -Name Microsoft.Online.SharePoint.PowerShell -ListAvailable | Select Name,Version
+Install-Module -Name Microsoft.Online.SharePoint.PowerShell -force
+Update-Module -Name Microsoft.Online.SharePoint.PowerShell -force
+
+#Commands to connect to SPO & provision OneDrive based on txt file names
+#Connect-SPOService -Url https://highlandscollege0-admin.sharepoint.com -Credential insert.upn@domainname.com
+Connect-SPOService -Url https://highlandscollege0-admin.sharepoint.com
+$users = Get-Content -path "C:\file\location"
+Request-SPOPersonalSite -UserEmails $users
+
+Set-ExecutionPolicy Restricted -Force
