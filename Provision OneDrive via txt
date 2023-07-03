@@ -7,6 +7,7 @@ Get-Module -Name Microsoft.Online.SharePoint.PowerShell -ListAvailable | Select 
 Install-Module -Name Microsoft.Online.SharePoint.PowerShell -force
 Update-Module -Name Microsoft.Online.SharePoint.PowerShell -force
 }
+& $updatemodules
 
 #Commands to connect to SPO & provision OneDrive based on txt file names
 #Connect-SPOService -Url https://yourspo.url.com -Credential insert.upn@domainname.com
