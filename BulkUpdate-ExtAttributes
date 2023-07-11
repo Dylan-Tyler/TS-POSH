@@ -1,0 +1,24 @@
+#Add customattributes 1-15
+Connect-ExchangeOnline
+
+$SkippedUsers = @()
+$FailedUsers = @()
+
+$CSVrecords = Import-Csv "C:\ts\imports\faculty.csv" -Delimiter ","
+foreach($CSVrecord in $CSVrecords ){
+    $upn = $CSVrecord.UserPrincipalName
+    $user = Get-Mailbox -Filter "userPrincipalName -eq '$upn'"  
+    if ($user) {
+        try{
+        $user | Set-Mailbox -CustomAttribute15 $CSVrecord.customattribute15
+        } catch {
+        $FailedUsers += $upn
+        Write-Warning "$upn user found, but FAILED to update."
+        }
+    }
+    else {
+        Write-Warning "$upn not found, skipped"
+        $SkippedUsers += $upn
+    }
+}
+
